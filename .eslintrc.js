@@ -8,7 +8,7 @@ module.exports = {
     'sort-imports': [
       'error',
       {
-        ignoreCase: false,
+        ignoreCase: true,
         ignoreDeclarationSort: true,
         ignoreMemberSort: false,
         memberSyntaxSortOrder: ['single', 'multiple', 'none', 'all'],
