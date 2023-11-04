@@ -1,11 +1,5 @@
-export const getData = async (page: number) => {
-  console.log('!!!');
-
+export const getDataFromSWAPI = async (page: number) => {
   const response = await fetch(`https://swapi.dev/api/people/?page=${page}`);
-  console.log(response);
-
   const data = await response.json();
-  console.log(data);
-
   return data;
 };
