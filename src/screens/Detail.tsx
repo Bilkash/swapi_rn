@@ -23,8 +23,6 @@ export default function DetailScreen({ route }: Props) {
     fetchDetailData();
   }, [url]);
 
-  console.log({ person });
-
   const renderPersonInfo = () => {
     if (person) {
       return Object.entries(person).map(item => {

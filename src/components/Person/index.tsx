@@ -5,15 +5,8 @@ import LikeButton from '../LikeButton';
 import { useNavigation } from '@react-navigation/native';
 import { FavoriteState } from '../../redux/favoriteSlice';
 
-export default function Person({
-  name,
-  gender,
-  height,
-  mass,
-  url,
-}: StarWarsCharacter) {
+export default function Person({ name, gender, url }: StarWarsCharacter) {
   const navigation = useNavigation();
-  console.log(url);
 
   function genderCategory(category: string): keyof FavoriteState {
     if (category === 'male') {
