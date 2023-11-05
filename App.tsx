@@ -6,8 +6,10 @@ import { Provider } from 'react-redux';
 import HomeScreen from './src/screens/Home';
 
 import { store } from './src/redux/store';
+import { RootStackParamList } from './src/types';
+import DetailScreen from './src/screens/Detail';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): JSX.Element {
   return (
@@ -15,6 +17,7 @@ function App(): JSX.Element {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Detail" component={DetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

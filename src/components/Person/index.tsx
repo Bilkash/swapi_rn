@@ -1,24 +1,42 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StarWarsCharacter } from '../../types';
+import LikeButton from '../LikeButton';
+import { useNavigation } from '@react-navigation/native';
+import { FavoriteState } from '../../redux/favoriteSlice';
 
 export default function Person({
   name,
   gender,
   height,
   mass,
+  url,
 }: StarWarsCharacter) {
+  const navigation = useNavigation();
+  console.log(url);
+
+  function genderCategory(category: string): keyof FavoriteState {
+    if (category === 'male') {
+      return 'male';
+    } else if (category === 'female') {
+      return 'female';
+    } else {
+      return 'other';
+    }
+  }
+
   return (
     <View style={style.wrapper}>
-      <View style={style.inner}>
-        <Text>Name: {name}</Text>
-        <Text>Gender: {gender}</Text>
-      </View>
+      <TouchableOpacity
+        style={style.link}
+        onPress={() => navigation.navigate('Detail', { url })}>
+        <View style={style.inner}>
+          <Text style={style.text}>Name: {name}</Text>
+          <Text style={style.text}>Gender: {gender}</Text>
+        </View>
+      </TouchableOpacity>
 
-      <View style={style.inner}>
-        <Text>Height: {height}</Text>
-        <Text>Mass: {mass}</Text>
-      </View>
+      <LikeButton name={name} gender={genderCategory(gender)} />
     </View>
   );
 }
@@ -31,9 +49,20 @@ const style = StyleSheet.create({
     height: 80,
     borderBottomColor: 'black',
     borderBottomWidth: 2,
+    paddingRight: 25,
+  },
+  link: {
+    width: '85%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   inner: {
-    width: '50%',
+    width: '100%',
     padding: 15,
+  },
+  text: {
+    fontSize: 16,
+    color: 'black',
   },
 });

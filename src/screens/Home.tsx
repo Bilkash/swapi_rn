@@ -17,8 +17,13 @@ import {
 } from '../redux/dataSlice';
 import Person from '../components/Person';
 import Pagination from '../components/Pagination';
+import Favorite from '../components/Favorite';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types';
 
-export default function HomeScreen() {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+export default function HomeScreen({ navigation }: Props) {
   const { page, data, loading } = useSelector((state: RootState) => state.data);
   const dispatch = useDispatch();
 
@@ -47,6 +52,8 @@ export default function HomeScreen() {
 
   return (
     <View>
+      <Favorite />
+
       {loading && (
         <View style={style.loaderWrapper}>
           <ActivityIndicator size="large" />
@@ -64,10 +71,10 @@ export default function HomeScreen() {
 
 const style = StyleSheet.create({
   scroll: {
-    height: '85%',
+    height: '75%',
   },
   loaderWrapper: {
-    height: '85%',
+    height: '75%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

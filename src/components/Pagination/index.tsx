@@ -38,11 +38,11 @@ export default function Pagination() {
 const style = StyleSheet.create({
   wrapper: {
     position: 'absolute',
-    bottom: -60,
+    bottom: -50,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingTop: 20,
+    paddingTop: 10,
     paddingHorizontal: '32%',
   },
   pageCount: {

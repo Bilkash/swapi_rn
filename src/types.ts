@@ -23,3 +23,8 @@ export interface StarWarsCharacter {
   url: string;
   vehicles: string[];
 }
+
+export type RootStackParamList = {
+  Home: undefined;
+  Detail: { url: string };
+};
