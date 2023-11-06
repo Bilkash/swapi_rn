@@ -10,8 +10,6 @@ export default function Favorite() {
   );
   const dispatch = useDispatch();
 
-  console.log({ male, female, other });
-
   return (
     <View style={styles.wrapper}>
       <View style={styles.item}>
@@ -50,6 +48,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 3,
     borderRadius: 15,
+    backgroundColor: '#c2c0bf',
   },
   itemText: {
     color: 'black',
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
   reset: {
     borderColor: 'red',
     borderWidth: 3,
+    backgroundColor: 'red',
   },
   resetText: {
     color: 'red',

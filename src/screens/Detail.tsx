@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { RootStackParamList, StarWarsCharacter } from '../types';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { getDetailDataFromSWAPI } from '../requests/getDetailData';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Detail'>;
 
 export default function DetailScreen({ route }: Props) {
   const { url } = route.params;
   const [person, setPerson] = useState<StarWarsCharacter | null>(null);
+  const navigation = useNavigation();
 
   async function fetchDetailData() {
     try {
@@ -22,6 +24,12 @@ export default function DetailScreen({ route }: Props) {
   useEffect(() => {
     fetchDetailData();
   }, [url]);
+
+  useEffect(() => {
+    if (person) {
+      navigation.setOptions({ title: person.name });
+    }
+  });
 
   const renderPersonInfo = () => {
     if (person) {
@@ -39,8 +47,8 @@ export default function DetailScreen({ route }: Props) {
 
   if (!person) {
     return (
-      <View>
-        <ActivityIndicator size="large" />
+      <View style={[styles.wrapper, styles.loaderWrapper]}>
+        <ActivityIndicator size="large" color={'#fe2923'} />
       </View>
     );
   } else {
@@ -52,6 +60,13 @@ const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: 15,
     paddingVertical: 10,
+    backgroundColor: '#c2c0bf',
+    height: '100%',
+  },
+  loaderWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontWeight: '700',

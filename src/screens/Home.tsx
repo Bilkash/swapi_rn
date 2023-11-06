@@ -51,12 +51,12 @@ export default function HomeScreen({ navigation }: Props) {
   };
 
   return (
-    <View>
+    <View style={style.wrapper}>
       <Favorite />
 
       {loading && (
         <View style={style.loaderWrapper}>
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size="large" color={'#fe2923'} />
         </View>
       )}
 
@@ -70,13 +70,18 @@ export default function HomeScreen({ navigation }: Props) {
 }
 
 const style = StyleSheet.create({
+  wrapper: {
+    backgroundColor: '#767574',
+  },
   scroll: {
     height: '75%',
+    backgroundColor: '#767574',
   },
   loaderWrapper: {
     height: '75%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#767574',
   },
 });

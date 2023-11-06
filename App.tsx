@@ -16,8 +16,20 @@ function App(): JSX.Element {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Detail" component={DetailScreen} />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Detail"
+            component={DetailScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: '#c1c1c1',
+              },
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

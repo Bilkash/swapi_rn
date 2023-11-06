@@ -32,9 +32,11 @@ export default function LikeButton({ name, gender }: LikeButtonProps) {
   };
 
   return (
-    <TouchableOpacity onPress={() => handleAddToFavorite()}>
+    <TouchableOpacity
+      style={isLiked(gender, name) ? style.unlike : style.like}
+      onPress={() => handleAddToFavorite()}>
       <View>
-        <Text style={style.text}>
+        <Text style={isLiked(gender, name) ? style.textUnlike : style.textLike}>
           {isLiked(gender, name) ? 'Unlike' : 'Like'}
         </Text>
       </View>
@@ -43,8 +45,28 @@ export default function LikeButton({ name, gender }: LikeButtonProps) {
 }
 
 const style = StyleSheet.create({
-  text: {
+  like: {
+    borderWidth: 3,
+    borderColor: 'red',
+    borderRadius: 15,
+    padding: 5,
+    backgroundColor: 'white',
+  },
+  textLike: {
     fontSize: 16,
-    color: 'black',
+    color: 'red',
+    fontWeight: '900',
+  },
+  unlike: {
+    borderWidth: 3,
+    borderColor: 'red',
+    borderRadius: 15,
+    padding: 5,
+    backgroundColor: 'red',
+  },
+  textUnlike: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '900',
   },
 });

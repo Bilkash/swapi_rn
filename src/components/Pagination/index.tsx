@@ -17,10 +17,11 @@ export default function Pagination() {
         disabled={page === 1}
         title="Prev"
         onPress={() => dispatch(decrementPage())}
+        color={'#FF0000'}
       />
 
       <View style={style.pageCount}>
-        <Text>
+        <Text style={style.text}>
           {page}
           {lastPage && `/${lastPage}`}
         </Text>
@@ -30,6 +31,7 @@ export default function Pagination() {
         title="Next"
         disabled={page === lastPage}
         onPress={() => dispatch(incrementPage())}
+        color={'#FF0000'}
       />
     </View>
   );
@@ -37,18 +39,21 @@ export default function Pagination() {
 
 const style = StyleSheet.create({
   wrapper: {
-    position: 'absolute',
-    bottom: -50,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingTop: 10,
+    height: 80,
     paddingHorizontal: '32%',
+    backgroundColor: '#767574',
   },
   pageCount: {
     width: '25%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    color: 'white',
+    fontWeight: '700',
   },
 });
